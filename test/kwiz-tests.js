@@ -43,28 +43,6 @@ describe('Kwiz', function () {
         })
     })
 
-    it('should work with required messages', function () {
-      var quiz = new Kwiz(stub.milliQuiz)
-      return quiz.start()
-        .then((reply) => {
-          should.not.exist(reply.error)
-          return quiz.processMessage()
-        })
-        .then((reply) => {
-          should.not.exist(reply.error)
-          return quiz.processMessage()
-        })
-        .then((reply) => {
-          should.exist(reply.error)
-          reply.error.should.be.true()
-          reply.message.should.be.equal('Really?')
-          return quiz.processMessage()
-        })
-        .then((reply) => {
-          return quiz.processMessage('John')
-        })
-    })
-
     it('should return answers on complete', function () {
       var quiz = new Kwiz(stub.milliQuiz)
       return quiz.start()

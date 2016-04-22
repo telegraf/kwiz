@@ -37,7 +37,7 @@ module.exports = {
     messages: [
       {
         messages: [
-          {message: 'Hi there!'},
+          {message: 'Hi there!', question: {id: 'something'}},
         ]
       },
       {message: 'What is your name?', question: {type: 'string', id: 'name'}},
