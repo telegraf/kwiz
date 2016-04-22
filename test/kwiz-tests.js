@@ -1,4 +1,3 @@
-var debug = require('debug')('kwiz:test')
 var should = require('should')
 var Kwiz = require('../lib/kwiz')
 var stub = require('./stub')

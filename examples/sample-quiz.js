@@ -1,4 +1,3 @@
-var debug = require('debug')('kwiz:example')
 var readline = require('readline')
 var Kwiz = require('../lib/kwiz')
 var stub = require('../test/stub')

@@ -37,7 +37,7 @@ module.exports = {
     messages: [
       {
         messages: [
-          {message: 'Hi there!', question: {id: 'something'}},
+          {message: 'Hi there!', question: {id: 'something'}}
         ]
       },
       {message: 'What is your name?', question: {type: 'string', id: 'name'}},
@@ -45,13 +45,13 @@ module.exports = {
       {
         criteria: {'answers.age': {$lt: 21}},
         messages: [
-          {message: 'Coke or Pepsi?', question: {type: 'chiose', items: ['Coke', 'Pepsi'], id: 'beverage'}},
+          {message: 'Coke or Pepsi?', question: {type: 'chiose', items: ['Coke', 'Pepsi'], id: 'beverage'}}
         ]
       },
       {
         criteria: {'answers.age': {$gte: 21}},
         messages: [
-          { message: 'Beer or Vine?', question: {type: 'chiose', items: ['Beer', 'Vine'], id: 'beverage'}},
+          {message: 'Beer or Vine?', question: {type: 'chiose', items: ['Beer', 'Vine'], id: 'beverage'}},
           {
             criteria: {'answers.beverage': 'Beer'},
             messages: [
