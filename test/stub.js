@@ -11,7 +11,7 @@ module.exports = {
   milliQuiz: {
     messages: [
       {message: 'Hey'},
-      {message: 'What is your name?', question: {hint: 'Really?', id: 'name'}},
+      {message: 'What is your name?', question: {type: 'string', hint: 'Really?', id: 'name'}},
       {message: 'Buy {{answers.name}}'}
     ]
   },
