@@ -1,0 +1,41 @@
+{
+  "name": "kwiz",
+  "version": "0.0.1",
+  "description": "Quiz/Survey engine",
+  "main": "lib/kwiz.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/telegraf/kwiz.git"
+  },
+  "keywords": [
+    "kwiz",
+    "quiz",
+    "examination",
+    "survey"
+  ],
+  "author": "Vitaly Domnikov <dotcypress@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/telegraf/kwiz/issues"
+  },
+  "homepage": "https://github.com/telegraf/kwiz#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "files": [
+    "lib/app.js"
+  ],
+  "dependencies": {
+    "debug": "^2.2.0",
+    "handlebars": "^4.0.5",
+    "lodash": "^4.11.1",
+    "mingo": "^0.6.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.3.1"
+  }
+}
