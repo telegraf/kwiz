@@ -120,24 +120,25 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          return quiz.processMessage('Nope')
+          return quiz.processMessage('sdsvdsv')
         })
         .then((reply) => {
-          reply.message.should.be.equal('Yes or No, John')
+          reply.message.should.be.equal('Yes or No, John :)')
           should.exist(reply.error)
           reply.error.should.be.true()
-          return quiz.processMessage('Yes')
+          return quiz.processMessage('yep')
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', sure: 'Yes', age: 33})
+          quiz.getState().answers.should.deepEqual({name: 'John', sure: 'yes', age: 33})
         })
     })
 
     it('should process custom types', function () {
       var quiz = new Kwiz(stub.customQuestionTypeQuiz)
+
       quiz.addHandler('speed', function (question, answer) {
-        var matches = /(\d+)( ?)+mph/i.exec(answer)
+        var matches = /(\d+) +mph/i.exec(answer)
         return matches ? Promise.resolve(parseInt(matches[1], 10)) : Promise.reject(question.hint || 'Wrong speed value')
       })
       return quiz.start()
@@ -150,7 +151,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.exist(reply.error)
-          return quiz.processMessage('42 MPH')
+          return quiz.processMessage('42 MpH')
         })
         .then((reply) => {
           should.not.exist(reply.error)
@@ -173,11 +174,11 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          return quiz.processMessage('Vine')
+          return quiz.processMessage('vine')
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 22, beverage: 'Vine'})
+          quiz.getState().answers.should.deepEqual({name: 'John', age: 22, beverage: 'vine'})
         })
     })
 
@@ -246,11 +247,15 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
+          return quiz.processMessage('yes')
+        })
+        .then((reply) => {
+          should.not.exist(reply.error)
           return quiz.processMessage('Vine')
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Vine'})
+          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Vine', alcohol: 'yes'})
         })
     })
 
@@ -271,6 +276,10 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
+          return quiz.processMessage('Yep')
+        })
+        .then((reply) => {
+          should.not.exist(reply.error)
           return quiz.processMessage('Beer')
         })
         .then((reply) => {
@@ -283,7 +292,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname'})
+          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname', alcohol: 'yes'})
         })
     })
   })

@@ -7,33 +7,40 @@ var rl = readline.createInterface({
   output: process.stdout
 })
 
+// Convert Promise
 var askUser = function (question) {
   return new Promise(function (resolve, reject) {
-    rl.question(question + ' ', function (userAnswer) {
+    rl.question((question || '') + ' ', function (userAnswer) {
       resolve(userAnswer)
     })
   })
 }
 
+// Quiz init
 var quiz = new Kwiz(stub.megaQuiz)
-quiz.start()
-  .then(function (engineReply) {
-    askUser(engineReply.message)
-      .then(function (userAnswer) {
-        loop(userAnswer)
-      })
-  })
 
-function loop (message) {
-  quiz.processMessage(message)
-    .then(function (engineReply) {
-      if (engineReply.completed) {
+// Start
+quiz.start().then(function (message) {
+  loop(message.message)
+})
+
+function loop (question) {
+  askUser(question)
+    .then(function (reply) {
+      if (reply === '/state') {
+        console.log(quiz.getState())
+        return loop()
+      }
+      if (reply === '/quit') {
         rl.close()
         return console.log(quiz.getState())
       }
-      askUser(engineReply.message)
-        .then(function (reply) {
-          loop(reply)
+      quiz.processMessage(reply)
+        .then(function (question) {
+          loop(question.message)
+        })
+        .catch(function(e){
+          console.log(e)
         })
     })
 }
