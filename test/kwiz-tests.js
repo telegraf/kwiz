@@ -27,6 +27,7 @@ describe('Kwiz', function () {
           should.exist(reply)
           reply.should.have.property('message')
           reply.message.should.be.equal('Hey')
+          quiz.isCompleted().should.be.true()
         })
     })
 
