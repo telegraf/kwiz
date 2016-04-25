@@ -1,6 +1,6 @@
 {
   "name": "kwiz",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Quiz/Survey engine",
   "main": "lib/kwiz.js",
   "scripts": {
@@ -26,7 +26,8 @@
     "node": ">=4.0.0"
   },
   "files": [
-    "lib/app.js"
+    "lib/app.js",
+    "lib/handlers.js"
   ],
   "dependencies": {
     "debug": "^2.2.0",
