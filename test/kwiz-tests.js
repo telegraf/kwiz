@@ -159,6 +159,32 @@ describe('Kwiz', function () {
           quiz.getState().answers.should.deepEqual({ca_speed_limit: 42})
         })
     })
+
+    it('should process custom types from constructor', function () {
+      var handlers = {
+        speed: function (question, answer) {
+          var matches = /(\d+) +mph/i.exec(answer)
+          return matches ? Promise.resolve(parseInt(matches[1], 10)) : Promise.reject(question.hint || 'Wrong speed value')
+        }
+      }
+      var quiz = new Kwiz(stub.customQuestionTypeQuiz, null, handlers)
+      return quiz.start()
+        .then((reply) => {
+          return quiz.processMessage('d')
+        })
+        .then((reply) => {
+          should.exist(reply.error)
+          return quiz.processMessage(12312312)
+        })
+        .then((reply) => {
+          should.exist(reply.error)
+          return quiz.processMessage('42 MpH')
+        })
+        .then((reply) => {
+          should.not.exist(reply.error)
+          quiz.getState().answers.should.deepEqual({ca_speed_limit: 42})
+        })
+    })
   })
 
   describe('criteria:', function () {
