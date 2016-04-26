@@ -42,7 +42,7 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
 ## Api
 
 * `Kwiz`
-  * [`new Kwiz(quizDefinition, [state])`](#new)
+  * [`new Kwiz(quizDefinition [,state, handlers])`](#new)
   * [`.addHandler(type, handler)`](#add-handler)
   * [`.start()`](#start)
   * [`.isCompleted()`](#is-completed)
@@ -59,6 +59,7 @@ Initialize new quiz.
 | --- | --- | --- |
 | quizDefinition | `Object` | [Quiz definition](#quiz-definition) |
 | state | `Object` | Optional state |
+| handlers | `Object` | Custom answer type handlers |
 
 * * *
 
