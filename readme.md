@@ -51,7 +51,7 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
 
 
 <a name="new"></a>
-#### `Kwiz.new(quizDefinition, [state])`
+#### `Kwiz.new(quizDefinition, [state], [handlers])`
 
 Initialize new quiz.
 
