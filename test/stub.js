@@ -25,8 +25,8 @@ module.exports = {
     questions: [
       {message: 'What is your name?', answer: {type: 'string', id: 'name'}},
       {message: 'Got it!\n{{answers.name}}, how old are you?', answer: {type: 'int', id: 'age'}},
-      {message: 'Coke or Pepsi?', answer: {type: 'chiose', items: ['Coke', 'Pepsi'], id: 'beverage'}, criteria: {'answers.age': {$lt: 21}}},
-      {message: 'Beer or Vine?', answer: {type: 'chiose', items: ['Beer', 'Vine'], id: 'beverage'}, criteria: {'answers.age': {$gte: 21}}},
+      {message: 'Coke or Pepsi?', answer: {type: 'choise', items: ['Coke', 'Pepsi'], id: 'beverage'}, criteria: {'answers.age': {$lt: 21}}},
+      {message: 'Beer or Vine?', answer: {type: 'choise', items: ['Beer', 'Vine'], id: 'beverage'}, criteria: {'answers.age': {$gte: 21}}},
       {message: 'Buy {{answers.name}}'}
     ]
   },
@@ -42,18 +42,18 @@ module.exports = {
       {
         criteria: {'answers.age': {$lt: 21}},
         questions: [
-          {message: 'Coke or Pepsi?', answer: {type: 'chiose', items: ['Coke', 'Pepsi'], id: 'beverage'}}
+          {message: 'Coke or Pepsi?', answer: {type: 'choise', items: ['Coke', 'Pepsi'], id: 'beverage'}}
         ]
       },
       {message: 'Do you drink any alcohol?', answer: {type: 'truthy', id: 'alcohol'}, criteria: {'answers.age': {$gte: 21}}},
       {
-        criteria: {'answers.alcohol': 'yes'},
+        criteria: {'answers.alcohol': true},
         questions: [
-          {message: 'Beer or Vine?', answer: {type: 'chiose', items: ['Beer', 'Vine'], id: 'beverage'}},
+          {message: 'Beer or Vine?', answer: {type: 'choise', items: ['Beer', 'Vine'], id: 'beverage'}},
           {
             criteria: {'answers.beverage': 'Beer'},
             questions: [
-              {message: 'IPA or Stout?', answer: {type: 'chiose', items: ['IPA', 'Stout'], id: 'beer_kind'}},
+              {message: 'IPA or Stout?', answer: {type: 'choise', items: ['IPA', 'Stout'], id: 'beer_kind'}},
               {message: 'What is your favorite IPA?', answer: {type: 'string', id: 'favorite_ipa'}, criteria: {'answers.beer_kind': 'IPA'}}]
           }
         ]
