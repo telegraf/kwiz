@@ -131,7 +131,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', sure: 'yes', age: 33})
+          quiz.getState().answers.should.deepEqual({name: 'John', sure: true, age: 33})
         })
     })
 
@@ -282,7 +282,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Vine', alcohol: 'yes'})
+          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Vine', alcohol: true})
         })
     })
 
@@ -319,7 +319,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname', alcohol: 'yes'})
+          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname', alcohol: true})
         })
     })
   })

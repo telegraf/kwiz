@@ -42,7 +42,7 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
 ## Api
 
 * `Kwiz`
-  * [`new Kwiz(quizDefinition, [state])`](#new)
+  * [`new Kwiz(quizDefinition ,[state], [handlers])`](#new)
   * [`.addHandler(type, handler)`](#add-handler)
   * [`.start()`](#start)
   * [`.isCompleted()`](#is-completed)
@@ -59,6 +59,7 @@ Initialize new quiz.
 | --- | --- | --- |
 | quizDefinition | `Object` | [Quiz definition](#quiz-definition) |
 | state | `Object` | Optional state |
+| handlers | `Object` | Custom answer type handlers |
 
 * * *
 
@@ -134,11 +135,12 @@ Question structure:
 | Field | Type | Description |
 | --- | --- | --- |
 | message | 'String' | [Handlebars template](#handlebars) (must be empty for question groups) |
-| answer | 'Object' | Answer definition (Optional) |
+| answer | 'Object' | Answer options (Optional) |
 | criteria | 'String' | [Criteria](#criteria) (Optional) |
 | messages | 'Array' | Array of questons (Optional) |
+| attachment | 'Any' | Question attachment (Optional) |
 
-Question definition  structure:
+Answer options structure:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -170,10 +172,10 @@ Engine reply structure:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| message | 'String' | Engine message(optional) |
-| meta | 'Any' | Question meta(optional) |
-| error | 'Bool' | Error flag |
-| completed | 'Bool' | Is quiz completed |
+| message | 'String' | Engine message (Optional)  |
+| error | 'Bool' | Error flag (Optional) |
+| completed | 'Bool' | Is quiz completed (Optional)  |
+| attachment | 'Any' | Question attachment (Optional) |
 
 <a name="answer-types"></a>
 ### Answer types
