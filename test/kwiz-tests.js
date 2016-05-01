@@ -62,6 +62,20 @@ describe('Kwiz', function () {
           quiz.getState().answers.should.deepEqual({name: 'John'})
         })
     })
+
+    it('should accept initial answer', function () {
+      var quiz = new Kwiz(stub.semiInitalizedQuiz)
+      return quiz.start('Hey')
+        .then((reply) => {
+          should.exist(reply.error)
+          reply.message.should.be.equal('Really?')
+          return quiz.processMessage(42)
+        })
+        .then((reply) => {
+          should.not.exist(reply.error)
+          quiz.getState().answers.should.deepEqual({number: 42})
+        })
+    })
   })
 
   describe('templates:', function () {
