@@ -61,6 +61,12 @@ module.exports = {
       {message: 'Buy {{answers.name}}'}
     ]
   },
+  semiInitalizedQuiz: {
+    questions: [
+      {message: '', answer: {type: 'int', hint: 'Really?', id: 'number'}},
+      {message: 'Answer: {{answers.number}}'}
+    ]
+  },
   customQuestionTypeQuiz: {
     questions: [{message: 'What is the speed limit in California?', answer: {id: 'ca_speed_limit', type: 'speed', hint: 'Use MPH'}}]
   }
