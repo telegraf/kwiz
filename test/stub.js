@@ -47,7 +47,7 @@ module.exports = {
       },
       {message: 'Do you drink any alcohol?', answer: {type: 'truthy', id: 'alcohol'}, criteria: {'answers.age': {$gte: 21}}},
       {
-        criteria: {'answers.alcohol': true},
+        criteria: {'answers.alcohol': 'yes'},
         questions: [
           {message: 'Beer or Vine?', answer: {type: 'choise', items: ['Beer', 'Vine'], id: 'beverage'}},
           {
