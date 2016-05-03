@@ -1,7 +1,7 @@
 {
   "name": "kwiz",
   "version": "1.1.0",
-  "description": "Quiz/Survey engine",
+  "description": "Quiz/Survey/Flow engine",
   "main": "lib/kwiz.js",
   "scripts": {
     "test": "mocha test"
@@ -14,6 +14,7 @@
     "kwiz",
     "quiz",
     "examination",
+    "flow",
     "survey"
   ],
   "author": "Vitaly Domnikov <dotcypress@gmail.com>",

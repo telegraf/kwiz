@@ -42,13 +42,21 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
 ## Api
 
 * `Kwiz`
+ *  [`Handlebars`](#handlebars)
   * [`new Kwiz(quizDefinition ,[state], [handlers])`](#new)
   * [`.addHandler(type, handler)`](#add-handler)
   * [`.start()`](#start)
   * [`.isCompleted()`](#is-completed)
-  * [`.Handlebars`](#handlebars)
   * [`.processMessage(message)`](#process-message)
 
+* * *
+
+<a name="handlebars"></a>
+#### `Kwiz.Handlebars`
+
+Instance of [Handlebar](http://handlebarsjs.com/). In case you need to register some helper or partial
+
+> Engine use kwiz.context as templating context.
 
 <a name="new"></a>
 #### `Kwiz.new(quizDefinition, [state], [handlers])`
@@ -88,15 +96,6 @@ Start quiz.
 #### `Kwiz.isCompleted() -> Bool`
 
 Checks for quiz complete.
-
-* * *
-
-<a name="handlebars"></a>
-#### `Kwiz.Handlebars`
-
-Instance of [Handlebar](http://handlebarsjs.com/). If you need to register some helper or partial
-
-> Engine use kwiz.context as templating context.
 
 * * *
 
