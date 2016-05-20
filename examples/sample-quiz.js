@@ -39,7 +39,7 @@ function loop (question) {
         .then(function (question) {
           loop(question.message)
         })
-        .catch(function(e){
+        .catch(function (e) {
           console.log(e)
         })
     })
