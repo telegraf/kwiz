@@ -2,7 +2,7 @@
 [![Build Status](https://img.shields.io/travis/telegraf/kwiz.svg?branch=master&style=flat-square)](https://travis-ci.org/telegraf/kwiz)
 [![NPM Version](https://img.shields.io/npm/v/kwiz.svg?style=flat-square)](https://www.npmjs.com/package/kwiz)
 
-Highly flexible JavaScript quiz engine.
+Highly flexible JavaScript Quiz/Survey engine.
 
 ## Installation
 
@@ -14,9 +14,9 @@ $ npm install kwiz
   
 ```js
 
-var Kwiz = require('kwiz')
+const Kwiz = require('kwiz')
 
-var quizDefinition = {
+const quizDefinition = {
   questions: [
     { message: 'Hey' },
     { message: 'What is your name?', answer: {type: 'string', hint: 'Really?', id: 'name'} },
@@ -24,7 +24,7 @@ var quizDefinition = {
   ]
 }
 
-var quiz = new Kwiz(quizDefinition)
+const quiz = new Kwiz(quizDefinition)
   quiz.start()
   .then((reply) => {
     return quiz.processMessage('John')
