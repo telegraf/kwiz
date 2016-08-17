@@ -2,7 +2,7 @@
 [![Build Status](https://img.shields.io/travis/telegraf/kwiz.svg?branch=master&style=flat-square)](https://travis-ci.org/telegraf/kwiz)
 [![NPM Version](https://img.shields.io/npm/v/kwiz.svg?style=flat-square)](https://www.npmjs.com/package/kwiz)
 
-Highly flexible JavaScript Quiz/Survey engine.
+Highly flexible JavaScript Quiz/Survey engine 
 
 ## Installation
 
@@ -42,7 +42,6 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
 ## Api
 
 * `Kwiz`
- *  [`Handlebars`](#handlebars)
   * [`new Kwiz(quizDefinition ,[state], [handlers])`](#new)
   * [`.addHandler(type, handler)`](#add-handler)
   * [`.start()`](#start)
@@ -50,13 +49,6 @@ There are some other [examples](https://github.com/telegraf/kwiz/tree/master/exa
   * [`.processMessage(message)`](#process-message)
 
 * * *
-
-<a name="handlebars"></a>
-#### `Kwiz.Handlebars`
-
-Instance of [Handlebar](http://handlebarsjs.com/). In case you need to register some helper or partial
-
-> Engine use kwiz.context as templating context.
 
 <a name="new"></a>
 #### `Kwiz.new(quizDefinition, [state], [handlers])`

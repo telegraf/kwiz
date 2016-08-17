@@ -1,27 +1,27 @@
-var should = require('should')
-var Kwiz = require('../lib/kwiz')
-var stub = require('./stub')
+const should = require('should')
+const Kwiz = require('../lib/kwiz')
+const stub = require('./stub')
 
 describe('Kwiz', function () {
   describe('core:', function () {
     it('should work with undefined quiz definitions', function () {
-      var quiz = new Kwiz()
+      const quiz = new Kwiz()
       return quiz.start()
     })
 
     it('should work with empty quiz definitions', function () {
-      var quiz = new Kwiz({})
+      const quiz = new Kwiz({})
       return quiz.start()
     })
 
     it('should not have empty state', function () {
-      var quiz = new Kwiz()
+      const quiz = new Kwiz()
       should.exist(quiz.getState())
       return quiz.start()
     })
 
     it('should work with simple message', function () {
-      var quiz = new Kwiz(stub.nanoQuiz)
+      const quiz = new Kwiz(stub.nanoQuiz)
       return quiz.start()
         .then((reply) => {
           should.exist(reply)
@@ -32,7 +32,7 @@ describe('Kwiz', function () {
     })
 
     it('should work with messages', function () {
-      var quiz = new Kwiz(stub.microQuiz)
+      const quiz = new Kwiz(stub.microQuiz)
       return quiz.start()
         .then((reply) => {
           reply.message.should.be.equal('Hey')
@@ -44,7 +44,7 @@ describe('Kwiz', function () {
     })
 
     it('should return answers on complete', function () {
-      var quiz = new Kwiz(stub.milliQuiz)
+      const quiz = new Kwiz(stub.milliQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -64,7 +64,7 @@ describe('Kwiz', function () {
     })
 
     it('should accept initial answer', function () {
-      var quiz = new Kwiz(stub.semiInitalizedQuiz)
+      const quiz = new Kwiz(stub.semiInitalizedQuiz)
       return quiz.start('Hey')
         .then((reply) => {
           should.exist(reply.error)
@@ -80,7 +80,7 @@ describe('Kwiz', function () {
 
   describe('templates:', function () {
     it('should templates use context', function () {
-      var quiz = new Kwiz(stub.milliQuiz)
+      const quiz = new Kwiz(stub.milliQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -100,7 +100,7 @@ describe('Kwiz', function () {
 
   describe('handlers:', function () {
     it('should process primitive types', function () {
-      var quiz = new Kwiz(stub.centiQuiz)
+      const quiz = new Kwiz(stub.centiQuiz)
       return quiz.start()
         .then((reply) => {
           return quiz.processMessage()
@@ -150,10 +150,10 @@ describe('Kwiz', function () {
     })
 
     it('should process custom types', function () {
-      var quiz = new Kwiz(stub.customQuestionTypeQuiz)
+      const quiz = new Kwiz(stub.customQuestionTypeQuiz)
 
       quiz.addHandler('speed', function (question, answer) {
-        var matches = /(\d+) +mph/i.exec(answer)
+        const matches = /(\d+) +mph/i.exec(answer)
         return matches ? Promise.resolve(parseInt(matches[1], 10)) : Promise.reject(question.hint || 'Wrong speed value')
       })
       return quiz.start()
@@ -175,13 +175,13 @@ describe('Kwiz', function () {
     })
 
     it('should process custom types from constructor', function () {
-      var handlers = {
+      const handlers = {
         speed: function (question, answer) {
-          var matches = /(\d+) +mph/i.exec(answer)
+          const matches = /(\d+) +mph/i.exec(answer)
           return matches ? Promise.resolve(parseInt(matches[1], 10)) : Promise.reject(question.hint || 'Wrong speed value')
         }
       }
-      var quiz = new Kwiz(stub.customQuestionTypeQuiz, null, handlers)
+      const quiz = new Kwiz(stub.customQuestionTypeQuiz, null, handlers)
       return quiz.start()
         .then((reply) => {
           return quiz.processMessage('d')
@@ -203,7 +203,7 @@ describe('Kwiz', function () {
 
   describe('criteria:', function () {
     it('should process simple criteria', function () {
-      var quiz = new Kwiz(stub.kiloQuiz)
+      const quiz = new Kwiz(stub.kiloQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -224,7 +224,7 @@ describe('Kwiz', function () {
     })
 
     it('should process simple criteria again', function () {
-      var quiz = new Kwiz(stub.kiloQuiz)
+      const quiz = new Kwiz(stub.kiloQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -247,7 +247,7 @@ describe('Kwiz', function () {
 
   describe('groups:', function () {
     it('should works with groups', function () {
-      var quiz = new Kwiz(stub.megaQuiz)
+      const quiz = new Kwiz(stub.megaQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -272,7 +272,7 @@ describe('Kwiz', function () {
     })
 
     it('should works with groups with criteria', function () {
-      var quiz = new Kwiz(stub.megaQuiz)
+      const quiz = new Kwiz(stub.megaQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)
@@ -301,7 +301,7 @@ describe('Kwiz', function () {
     })
 
     it('should works with groups with criteria again', function () {
-      var quiz = new Kwiz(stub.megaQuiz)
+      const quiz = new Kwiz(stub.megaQuiz)
       return quiz.start()
         .then((reply) => {
           should.not.exist(reply.error)

@@ -1,32 +1,33 @@
-var readline = require('readline')
-var Kwiz = require('../lib/kwiz')
-var stub = require('../test/stub')
+const readline = require('readline')
+const Kwiz = require('../lib/kwiz')
+const { megaQuiz } = require('../test/stub')
 
-var rl = readline.createInterface({
+const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 })
 
 // Convert Promise
-var askUser = function (question) {
-  return new Promise(function (resolve, reject) {
-    rl.question((question || '') + ' ', function (userAnswer) {
+const askUser = (question) => {
+  return new Promise((resolve, reject) => {
+    rl.question((question || '') + ' ', (userAnswer) => {
       resolve(userAnswer)
     })
   })
 }
 
 // Quiz init
-var quiz = new Kwiz(stub.megaQuiz)
+const quiz = new Kwiz(megaQuiz)
 
 // Start
-quiz.start().then(function (message) {
-  loop(message.message)
-})
+quiz.start()
+  .then((message) => {
+    loop(message.message)
+  })
 
 function loop (question) {
   askUser(question)
-    .then(function (reply) {
+    .then((reply) => {
       if (reply === '/state') {
         console.log(quiz.getState())
         return loop()
@@ -36,10 +37,10 @@ function loop (question) {
         return console.log(quiz.getState())
       }
       quiz.processMessage(reply)
-        .then(function (question) {
+        .then((question) => {
           loop(question.message)
         })
-        .catch(function (e) {
+        .catch((e) => {
           console.log(e)
         })
     })
