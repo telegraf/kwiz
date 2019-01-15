@@ -20,7 +20,7 @@ const quizDefinition = {
   questions: [
     { message: 'Hey' },
     { message: 'What is your name?', answer: {type: 'string', hint: 'Really?', id: 'name'} },
-    { message: 'Buy {{answers.name}}' }
+    { message: 'Bye {{answers.name}}' }
   ]
 }
 
@@ -116,7 +116,7 @@ var quiz = {
       answer: {type: 'string', hint: 'Really?', id: 'name' }
     },
     { message: 'Wow', criteria: {'answers.age': {$lt: 21}}}
-    { message: 'Buy {{answers.name}}'}
+    { message: 'Bye {{answers.name}}'}
   ]
 }
 ```

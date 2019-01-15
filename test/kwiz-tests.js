@@ -39,7 +39,7 @@ describe('Kwiz', function () {
           return quiz.processMessage()
         })
         .then((reply) => {
-          reply.message.should.be.equal('Buy')
+          reply.message.should.be.equal('Bye')
         })
     })
 
@@ -59,7 +59,7 @@ describe('Kwiz', function () {
           return quiz.processMessage()
         })
         .then((reply) => {
-          quiz.getState().answers.should.deepEqual({name: 'John'})
+          quiz.getState().answers.should.deepEqual({ name: 'John' })
         })
     })
 
@@ -73,7 +73,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({number: 42})
+          quiz.getState().answers.should.deepEqual({ number: 42 })
         })
     })
   })
@@ -93,7 +93,7 @@ describe('Kwiz', function () {
         .then((reply) => {
           should.not.exist(reply.error)
           should.exist(reply.message)
-          reply.message.should.be.equal('Buy John')
+          reply.message.should.be.equal('Bye John')
         })
     })
   })
@@ -145,7 +145,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', sure: 'yes', age: 33})
+          quiz.getState().answers.should.deepEqual({ name: 'John', sure: 'yes', age: 33 })
         })
     })
 
@@ -170,7 +170,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({ca_speed_limit: 42})
+          quiz.getState().answers.should.deepEqual({ ca_speed_limit: 42 })
         })
     })
 
@@ -196,7 +196,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({ca_speed_limit: 42})
+          quiz.getState().answers.should.deepEqual({ ca_speed_limit: 42 })
         })
     })
   })
@@ -219,7 +219,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 22, beverage: 'vine'})
+          quiz.getState().answers.should.deepEqual({ name: 'John', age: 22, beverage: 'vine' })
         })
     })
 
@@ -240,7 +240,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 15, beverage: 'Coke'})
+          quiz.getState().answers.should.deepEqual({ name: 'John', age: 15, beverage: 'Coke' })
         })
     })
   })
@@ -267,7 +267,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 18, beverage: 'Coke'})
+          quiz.getState().answers.should.deepEqual({ name: 'John', age: 18, beverage: 'Coke' })
         })
     })
 
@@ -296,11 +296,11 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Vine', alcohol: 'yes'})
+          quiz.getState().answers.should.deepEqual({ name: 'John', age: 42, beverage: 'Vine', alcohol: 'yes' })
         })
     })
 
-    it('should works with groups with criteria again', function () {
+    it('should works with groups with criteria (alt)', function () {
       const quiz = new Kwiz(stub.megaQuiz)
       return quiz.start()
         .then((reply) => {
@@ -333,7 +333,7 @@ describe('Kwiz', function () {
         })
         .then((reply) => {
           should.not.exist(reply.error)
-          quiz.getState().answers.should.deepEqual({name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname', alcohol: 'yes'})
+          quiz.getState().answers.should.deepEqual({ name: 'John', age: 42, beverage: 'Beer', beer_kind: 'IPA', favorite_ipa: 'noname', alcohol: 'yes' })
         })
     })
   })
